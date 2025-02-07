@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1088547227097",
+    "project_id": "mcitest-4d24a",
+    "storage_bucket": "mcitest-4d24a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088547227097:android:2cb933400dedd9a5a605c8",
+        "android_client_info": {
+          "package_name": "com.example.mci_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb_B4AaKjeMMGYELEd4wEkK8ohPOZkb5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
