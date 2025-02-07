@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
-  final GlobalKey<FormState> formKeyUsername = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyEmail = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeyPassword = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeyConfirmPassword = GlobalKey<FormState>();
 
@@ -16,18 +16,16 @@ class LoginController extends GetxController {
     return passwordController.text == confirmPasswordController.text;
   }
 
-  ///Validates Username for Syntax that could be problematic
-  String? validateUsername(String? value) {
+  ///Simple Email validator
+  String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'usernameEmptyError'; // Error for empty username
-    } else if (value.startsWith('.')) {
-      return 'usernamePeriodErrorStart'; // Error if username starts or ends with a period
-    } else if (value.endsWith('.')) {
-      return 'usernamePeriodErrorEnd'; // Error for invalid characters
-    } else if (!RegExp(r'^[a-zA-Z0-9_.]+$').hasMatch(value)) {
-      return 'usernameInvalidError'; // Error for invalid characters
-    } else if (value.length > 30) {
-      return 'usernameLengthError'; // Error if username is too long
+      return 'Please enter your E-Mail';
+    }
+    final RegExp emailRegex = RegExp(
+        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    );
+    if (!emailRegex.hasMatch(value)) {
+      return 'Please enter a valid E-Mail';
     }
     return null;
   }
@@ -66,33 +64,27 @@ class LoginController extends GetxController {
 
   void toggleRegister() => isRegister.toggle();
 
-  ///Login via Firebase Auth Email system
-  void loginEmail() {
-    if (formKeyUsername.currentState!.validate() && formKeyPassword.currentState!.validate() && !isRegister.value) {
-      // Perform login logic here
+  ///Validates User input before sending to Firebase
+  bool validateInputs() {
+    if (isRegister.value) {
+      if (
+        formKeyEmail.currentState!.validate() &&
+        formKeyPassword.currentState!.validate() &&
+        formKeyConfirmPassword.currentState!.validate()
+      ) return true;
+    }else {
+      if (
+        formKeyEmail.currentState!.validate() &&
+        formKeyPassword.currentState!.validate()
+      ) return true;
     }
+    return false;
   }
 
-  ///Register via Firebase Auth Email system
-  void registerEmail() {
-    if (
-      formKeyUsername.currentState!.validate() &&
-      formKeyPassword.currentState!.validate() &&
-      formKeyConfirmPassword.currentState!.validate() &&
-      isRegister.value && isPasswordConfirmed()
-    ) {
-
-    }
-  }
-
-  //TODO Google Sign in
-  void googleSignIn() {
-    throw UnimplementedError();
-  }
 
   @override
   void onClose() {
-    usernameController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
     super.onClose();

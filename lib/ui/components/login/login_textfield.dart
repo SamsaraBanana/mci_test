@@ -6,6 +6,7 @@ class LoginTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?) validator;
   final InputDecoration decoration;
+  final TextInputType keyboardType;
 
   const LoginTextField(
     {
@@ -14,7 +15,8 @@ class LoginTextField extends StatelessWidget {
       required this.controller,
       required this.formKey,
       required this.validator,
-      required this.decoration
+      required this.decoration,
+      this.keyboardType = TextInputType.text
     }
   );
 
@@ -26,7 +28,7 @@ class LoginTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         validator: validator,
-        keyboardType: TextInputType.text,
+        keyboardType: keyboardType,
         decoration: decoration,
         obscureText: obscureText,
       ),
