@@ -16,41 +16,68 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Welcome'),
+        title: const Text('MCI TEST DEMO APP'),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Obx(
-            ()=> Column(
-              children: [
-                LoginTextField(
-                  obscureText: false,
-                  controller: loginController.usernameController,
-                  formKey: loginController.formKeyUsername,
-                  validator: loginController.validateUsername,
-                  decoration: usernameTextFieldDecoration("Username"),
-                ),
-                LoginTextField(
-                  obscureText: true,
-                  controller: loginController.passwordController,
-                  formKey: loginController.formKeyPassword,
-                  validator: loginController.validatePassword,
-                  decoration: passwordTextFieldDecoration("Password"),
-                ),
-                Visibility(
-                  visible: loginController.isRegister.value,
-                  child: LoginTextField(
-                    obscureText: true,
-                    controller: loginController.confirmPasswordController,
-                    formKey: loginController.formKeyConfirmPassword,
-                    validator: loginController.validatePassword,
-                    decoration: passwordTextFieldDecoration("ConfirmPassword"),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Obx(
+              ()=> Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 60),
+                    child: Text(
+                      loginController.isRegister.value
+                          ? "Register Now"
+                          : "Login Now",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor
+                      ),
+                    ),
                   ),
-                ),
-                LoginButton(buttonText: "Continue"),
-                RegisterLink(isRegistering: loginController.isRegister.value)
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: LoginTextField(
+                      obscureText: false,
+                      controller: loginController.usernameController,
+                      formKey: loginController.formKeyUsername,
+                      validator: loginController.validateUsername,
+                      decoration: usernameTextFieldDecoration("Username"),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: LoginTextField(
+                      obscureText: true,
+                      controller: loginController.passwordController,
+                      formKey: loginController.formKeyPassword,
+                      validator: loginController.validatePassword,
+                      decoration: passwordTextFieldDecoration("Password"),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Visibility(
+                      visible: loginController.isRegister.value,
+                      child: LoginTextField(
+                        obscureText: true,
+                        controller: loginController.confirmPasswordController,
+                        formKey: loginController.formKeyConfirmPassword,
+                        validator: loginController.validateConfirmPassword,
+                        decoration: passwordTextFieldDecoration("ConfirmPassword"),
+                      ),
+                    ),
+                  ),
+                  LoginButton(isRegistering: loginController.isRegister.value),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RegisterLink(isRegistering: loginController.isRegister.value),
+                  )
+                ],
+              ),
             ),
           ),
         )

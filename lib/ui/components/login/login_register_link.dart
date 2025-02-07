@@ -15,12 +15,12 @@ class RegisterLink extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
           isRegistering
-            ? "already A Member?"
-            : "Not a Member?",
+            ? "Already a Member? "
+            : "Not a Member? ",
           style: TextStyle(color: Theme.of(context).primaryColor),
         ),
         InkWell(

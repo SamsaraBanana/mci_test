@@ -5,11 +5,10 @@ class LoginController extends GetxController {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
-  final GlobalKey formKeyUsername = GlobalKey<FormState>();
-  final GlobalKey formKeyPassword = GlobalKey<FormState>();
-  final GlobalKey formKeyConfirmPassword = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyUsername = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyPassword = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyConfirmPassword = GlobalKey<FormState>();
 
-  var isEmailLogin = false.obs;
   var isRegister = false.obs;
 
 
@@ -17,6 +16,7 @@ class LoginController extends GetxController {
     return passwordController.text == confirmPasswordController.text;
   }
 
+  ///Validates Username for Syntax that could be problematic
   String? validateUsername(String? value) {
     if (value == null || value.isEmpty) {
       return 'usernameEmptyError'; // Error for empty username
@@ -32,6 +32,7 @@ class LoginController extends GetxController {
     return null;
   }
 
+  ///Validates the Password for common weaknesses
   String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'passwordEmptyError';
@@ -49,8 +50,45 @@ class LoginController extends GetxController {
     return null;
   }
 
-  void toggleEmailLogin() => isEmailLogin.toggle();
+  ///Validates if the ConfirmPassword is the same as the Password
+  String? validateConfirmPassword(String? value) {
+    String? passwordError = validatePassword(value);
+    if (passwordError == null) {
+      if(isPasswordConfirmed()) {
+        return null;
+      }
+      else {
+        return 'passwordConfirmError';
+      }
+    }
+    return passwordError;
+  }
+
   void toggleRegister() => isRegister.toggle();
+
+  ///Login via Firebase Auth Email system
+  void loginEmail() {
+    if (formKeyUsername.currentState!.validate() && formKeyPassword.currentState!.validate() && !isRegister.value) {
+      // Perform login logic here
+    }
+  }
+
+  ///Register via Firebase Auth Email system
+  void registerEmail() {
+    if (
+      formKeyUsername.currentState!.validate() &&
+      formKeyPassword.currentState!.validate() &&
+      formKeyConfirmPassword.currentState!.validate() &&
+      isRegister.value && isPasswordConfirmed()
+    ) {
+
+    }
+  }
+
+  //TODO Google Sign in
+  void googleSignIn() {
+    throw UnimplementedError();
+  }
 
   @override
   void onClose() {

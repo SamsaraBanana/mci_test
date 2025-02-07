@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../controller/login_controller.dart';
 
 class LoginButton extends StatelessWidget {
-  final String buttonText;
+  final bool isRegistering;
 
-  const LoginButton({super.key, required this.buttonText});
+  const LoginButton({super.key, required this.isRegistering});
 
   @override
   Widget build(BuildContext context) {
+    LoginController controller = Get.put(LoginController());
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {  },
+        onPressed: () {
+          isRegistering? controller.registerEmail() :
+          controller.loginEmail();
+        },
         style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
             backgroundColor: Colors.black,
@@ -22,7 +29,7 @@ class LoginButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 15)
         ),
         child: Text(
-          buttonText,
+          isRegistering? "Register" : "Login",
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
