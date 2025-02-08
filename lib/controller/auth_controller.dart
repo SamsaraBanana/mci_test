@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../ui/pages/dashboard/dashboard_page.dart';
 import '../ui/pages/login/login_page.dart';
+import '../ui/pages/navbar_page.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -20,14 +20,16 @@ class AuthController extends GetxController {
     ever(firebaseUser, _setInitialScreen);
   }
 
+  ///Set Initial Screen && when userStatus changes
   _setInitialScreen(User? user) {
     if (user == null) {
       Get.offAll(() => LoginPage());
     } else {
-      Get.offAll(() => DashboardPage());
+      Get.offAll(() => NavigationScreen());
     }
   }
 
+  ///Register with Email via Firebase
   void register(String email, String password) async {
     isLoading(true);
     try {
@@ -42,7 +44,7 @@ class AuthController extends GetxController {
     }
   }
 
-
+  ///Login with Email via Firebase
   void login(String email, String password) async {
     isLoading(true);
     try {

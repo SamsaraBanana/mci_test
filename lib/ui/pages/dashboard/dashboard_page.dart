@@ -12,15 +12,14 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
-              authController.logout();
-            },
-          )
-        ],
+        title: const Text('Dashboard'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            authController.logout();
+          },
+        ),
       ),
       body: Center(child: Text('Your logged in as ${authController.firebaseUser.value?.email}')),
     );
