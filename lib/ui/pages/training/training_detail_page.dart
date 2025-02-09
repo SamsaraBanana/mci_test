@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mci_test/ui/components/training/trainingDetailAppBarWidget.dart';
-
-import '../../../model/training_plan/training_plan_model.dart';
-import 'exercise_widget.dart';
+import 'package:mci_test/model/training_plan/training_session_model.dart';
+import 'package:mci_test/ui/components/training/training_detail_appbar_widget.dart';
+import '../../components/training/exercise_widget.dart';
 
 class TrainingDetailPage extends StatefulWidget {
-  final TrainingPlan plan;
-  const TrainingDetailPage({super.key, required this.plan});
+  final TrainingSession session;
+  const TrainingDetailPage({super.key, required this.session});
 
   @override
   State<TrainingDetailPage> createState() => _TrainingDetailPageState();
@@ -17,14 +16,14 @@ class _TrainingDetailPageState extends State<TrainingDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TrainingDetailAppBar(title: widget.plan.name, heroTag: widget.plan.name),
+      appBar: TrainingDetailAppBar(title: widget.session.trainingPlan.name, heroTag: widget.session.hashCode),
       body: Column(
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: widget.plan.exercises.length,
+              itemCount: widget.session.trainingPlan.exercises.length,
               itemBuilder: (context, index) {
-                final exercise = widget.plan.exercises[index];
+                final exercise = widget.session.trainingPlan.exercises[index];
                 return ExerciseWidget(exercise: exercise);
               },
             ),

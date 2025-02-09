@@ -2,10 +2,10 @@ import 'dart:math';
 
 class Exercise {
   final String name;
-  final int sets;
-  final int reps;
+  int sets;
+  int reps;
   final String repUnit;
-  final int weight;
+  int weight;
   final String weightUnit;
   final int breakTime;
   final String muscleGroup;

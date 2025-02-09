@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TrainingDetailAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final String heroTag;
+  final int heroTag;
 
   const TrainingDetailAppBar({super.key, required this.title, required this.heroTag});
 
@@ -29,9 +29,12 @@ class TrainingDetailAppBar extends StatelessWidget implements PreferredSizeWidge
           title: Text(title),
           centerTitle: true,
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.check, color: Colors.green),
+            Visibility(
+              visible: false, //TODO maybe implement edit function
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.check, color: Colors.green),
+              ),
             ),
           ],
         ),

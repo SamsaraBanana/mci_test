@@ -14,8 +14,8 @@ class ExerciseWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(child: Text(exercise.name)),
-          const Divider(),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,8 +25,10 @@ class ExerciseWidget extends StatelessWidget {
                   _buildEditableField(context, "Weight", exercise.weight.toString(), suffix: exercise.weightUnit),
                 ],
               ),
+              Text("E1RM: ${exercise.e1RM}"),
             ],
           ),
+          const Divider(),
         ],
       ),
     );
@@ -36,13 +38,13 @@ class ExerciseWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text("$label: "),
           SizedBox(
             width: 60,
             height: 35,
             child: TextField(
+              enabled: false,
               controller: TextEditingController(text: initialValue),
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,

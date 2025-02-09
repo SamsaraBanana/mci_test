@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mci_test/ui/pages/dashboard/dashboard_page.dart';
 import 'package:mci_test/ui/pages/training/training_page.dart';
-
 import '../../controller/nav_controller.dart';
 
 class NavigationScreen extends StatelessWidget {
+
   final NavigationController navController = Get.put(NavigationController());
+
 
   //List of all Pages displayed in the BottomNavigationBar
   final List<Widget> pages = [

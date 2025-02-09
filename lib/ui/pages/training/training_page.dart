@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../controller/training_controller.dart';
-import '../../components/training/training_empty_body.dart';
-import '../../components/training/training_session_body.dart';
+import 'training_empty_body.dart';
+import 'training_session_body.dart';
 
 class TrainingPage extends StatelessWidget {
   final trainingController = Get.put(TrainingController());
@@ -27,8 +26,8 @@ class TrainingPage extends StatelessWidget {
           return RefreshIndicator(
               onRefresh: trainingController.getActiveSession,
               child: trainingController.trainingSession.value == null
-                  ? TrainingEmptyBody()
-                  : TrainingSessionBody()
+                  ? TrainingEmptyBody() // If no active session, show the empty body
+                  : const TrainingSessionBody() // If there is an active session, show the session body
           );
         }),
       ),

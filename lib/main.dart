@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'controller/auth_controller.dart';
+import 'controller/training_controller.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -35,8 +36,9 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Init AuthController
+    //Init AuthController & TrainingController
     Get.put(AuthController());
+    Get.put(TrainingController());
 
     return const Scaffold(
       body: Center(child: CircularProgressIndicator()),
