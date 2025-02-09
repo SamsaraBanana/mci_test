@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../ui/pages/login/login_page.dart';
 import '../ui/pages/navbar_page.dart';
 
@@ -49,6 +50,33 @@ class AuthController extends GetxController {
     isLoading(true);
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Get.snackbar('Success', 'Logged In!',
+          snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      Get.snackbar('Login-Error', e.toString(),
+          backgroundColor: Colors.redAccent, colorText: Colors.white);
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  ///Login with Google via Firebase
+  void signInWithGoogle() async {
+    isLoading(true);
+    try {
+      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      UserCredential user = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      firebaseUser(user.user);
+
       Get.snackbar('Success', 'Logged In!',
           snackPosition: SnackPosition.BOTTOM);
     } catch (e) {

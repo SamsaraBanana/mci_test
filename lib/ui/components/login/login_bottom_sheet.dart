@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+
+import '../../../controller/auth_controller.dart';
 
 class LoginBottomSheet extends StatelessWidget {
   const LoginBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthController controller = Get.find();
     return Container(
       decoration: BoxDecoration(
           color: Theme.of(context).dialogBackgroundColor,
@@ -57,19 +61,22 @@ class LoginBottomSheet extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)
                 ),
                 Buttons.google,
-                onPressed: () {}
+                onPressed: () {
+                  controller.signInWithGoogle();
+                }
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-            child: SignInButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
-                ),
-                Buttons.apple,
-                onPressed: () {}
-            ),
-          )
+          if(false) //TODO: Add Apple Sign In
+            SizedBox(
+              width: double.infinity,
+              child: SignInButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  Buttons.apple,
+                  onPressed: () {}
+              ),
+            )
         ],
       ),
     );

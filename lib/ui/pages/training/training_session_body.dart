@@ -131,6 +131,7 @@ class TrainingSessionBody extends StatelessWidget {
                 ),
               ElevatedButton(
                   onPressed: () {
+                    //Update the current TrainingSession with the cloud.
                     if(trainingController.trainingSession.value == null)return;
                     TrainingSession updatedSession = trainingController.trainingSession.value!;
                     trainingController.updateTrainingSession(updatedSession);

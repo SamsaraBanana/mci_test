@@ -82,8 +82,16 @@ class TrainingController extends GetxController {
     enableRepsWeightInput(false);
   }
 
-  ///Starts an Exercise Set and calculates the E1RM after the Exercise is done.
+  ///Starts an Exercise Set and counts down the Sets to do.
   void startExerciseSet() {
+
+    var currentSetIndex = int.parse(setsTextController.text);
+    if (currentSetIndex==0) {
+      nextExercise();
+      return;
+    }
+    setsTextController.text = (currentSetIndex-1).toString();
+
     enableRepsWeightInput(true);
     isPaused(false);
   }
