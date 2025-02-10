@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mci_test/controller/training_controller.dart';
 
+///Page that is displayed when there is no active session.
 class TrainingEmptyBody extends StatelessWidget {
   final TrainingController controller = Get.find();
   TrainingEmptyBody({super.key});

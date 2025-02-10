@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controller/login_controller.dart';
 
+///Link to swap between login and register.
 class RegisterLink extends StatelessWidget {
   final bool isRegistering;
   const RegisterLink(

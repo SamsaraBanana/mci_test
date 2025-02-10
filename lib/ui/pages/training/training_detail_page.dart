@@ -3,6 +3,7 @@ import 'package:mci_test/model/training_plan/training_session_model.dart';
 import 'package:mci_test/ui/components/training/training_detail_appbar_widget.dart';
 import '../../components/training/exercise_widget.dart';
 
+///The training session detail page that displays details fot each exercise.
 class TrainingDetailPage extends StatefulWidget {
   final TrainingSession session;
   const TrainingDetailPage({super.key, required this.session});

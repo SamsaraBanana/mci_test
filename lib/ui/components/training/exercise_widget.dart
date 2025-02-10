@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mci_test/model/training_plan/training_exercise_model.dart';
 
+///Widget that displays exercises in the detail panel.
 class ExerciseWidget extends StatelessWidget {
   final Exercise exercise;
   const ExerciseWidget({super.key, required this.exercise});

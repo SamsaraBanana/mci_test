@@ -16,6 +16,7 @@ class AuthController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    // Listens to auth changes and updates the screen.
     firebaseUser = Rx<User?>(_auth.currentUser);
     firebaseUser.bindStream(_auth.authStateChanges());
     ever(firebaseUser, _setInitialScreen);

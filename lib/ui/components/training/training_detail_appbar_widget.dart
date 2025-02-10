@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///AppBar Widget for the training session detail page.
 class TrainingDetailAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final int heroTag;

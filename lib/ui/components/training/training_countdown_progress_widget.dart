@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/training_controller.dart';
 
+///Widget for the pause timer.
 class CountdownProgressBar extends GetView<TrainingController> {
   const CountdownProgressBar({super.key});
 

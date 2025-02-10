@@ -5,6 +5,7 @@ import 'package:mci_test/ui/pages/training/training_detail_page.dart';
 
 import '../../../controller/nav_controller.dart';
 
+///Card Widget for the training sessions.
 class TrainingPlanCardWidget extends StatelessWidget {
   final TrainingSession trainingSession;
   const TrainingPlanCardWidget({super.key, required this.trainingSession});

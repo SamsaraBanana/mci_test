@@ -4,6 +4,7 @@ import '../../../controller/training_controller.dart';
 import 'training_empty_body.dart';
 import 'training_session_body.dart';
 
+///Main Training page that swaps between active and no active session.
 class TrainingPage extends StatelessWidget {
   final trainingController = Get.put(TrainingController());
   TrainingPage({super.key});

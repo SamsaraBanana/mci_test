@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-
 import '../../../controller/auth_controller.dart';
 
+///Bottom Sheet in the login screen that displays Google Sign in.
+///It could also display Apple Sign In (Not Implemented).
 class LoginBottomSheet extends StatelessWidget {
   const LoginBottomSheet({super.key});
 

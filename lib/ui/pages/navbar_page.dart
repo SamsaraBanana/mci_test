@@ -4,6 +4,7 @@ import 'package:mci_test/ui/pages/dashboard/dashboard_page.dart';
 import 'package:mci_test/ui/pages/training/training_page.dart';
 import '../../controller/nav_controller.dart';
 
+///Bottom NavBar wrapper for the different Pages.
 class NavigationScreen extends StatelessWidget {
 
   final NavigationController navController = Get.put(NavigationController());

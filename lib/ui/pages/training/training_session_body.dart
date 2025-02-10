@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mci_test/ui/components/training/training_countdown_progress_widget.dart';
 import 'package:mci_test/ui/components/training/training_textfield_widget.dart';
-
 import '../../../controller/training_controller.dart';
 import '../../../model/training_plan/training_session_model.dart';
 
+///Page that is displayed when there is an active session.
 class TrainingSessionBody extends StatelessWidget {
   const TrainingSessionBody({super.key});
 

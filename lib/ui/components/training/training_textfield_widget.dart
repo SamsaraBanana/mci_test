@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+///TextFields for the active training session in the training page.
 class TrainingTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool isLocked;

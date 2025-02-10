@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///FormTextField for the login screen to check user input.
 class LoginTextField extends StatelessWidget {
   final bool obscureText;
   final GlobalKey formKey;
