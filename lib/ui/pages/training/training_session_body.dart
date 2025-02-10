@@ -105,12 +105,6 @@ class TrainingSessionBody extends StatelessWidget {
               if (!trainingController.enableSetInput.value && !trainingController.enableRepsWeightInput.value)
                 ElevatedButton(
                   onPressed: () {
-                    var currentSetIndex = int.parse(trainingController.setsTextController.text);
-                    if (currentSetIndex==0) {
-                      trainingController.nextExercise();
-                      return;
-                    }
-                    trainingController.setsTextController.text = (currentSetIndex-1).toString();
                     trainingController.startExerciseSet();
                   },
                   child: Text(
